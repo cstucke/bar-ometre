@@ -1,1 +1,2 @@
 Import the SQL file below in your database manager: pgAdmin4, DBeaver etc.
+Pgsql 15+ required!!!
