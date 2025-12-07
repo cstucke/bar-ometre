@@ -6,7 +6,7 @@ class FilterService:
     @staticmethod
     def get_all_cities():
 
-        query = "SELECT DISTINCT city FROM bars WHERE city IS NOT NULL ORDER BY city"
+        query = "SELECT DISTINCT addr_city FROM bars WHERE addr_city IS NOT NULL ORDER BY addr_city"
         results = Database.query(query)
         
         if not results:
@@ -20,7 +20,7 @@ class FilterService:
     def get_statistics():
 
         total_bars = Database.query("SELECT COUNT(*) FROM bars", one=True)[0]
-        total_cities = Database.query("SELECT COUNT(DISTINCT city) FROM bars WHERE city IS NOT NULL", one=True)[0]
+        total_cities = Database.query("SELECT COUNT(DISTINCT addr_city) FROM bars WHERE addr_city IS NOT NULL", one=True)[0]
         bars_with_coords = Database.query("SELECT COUNT(*) FROM bars WHERE latitude IS NOT NULL AND longitude IS NOT NULL", one=True)[0]
         
         return {

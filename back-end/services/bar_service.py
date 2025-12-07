@@ -55,7 +55,7 @@ class BarService:
     @staticmethod
     def get_bars_by_city(city):
 
-        query = "SELECT * FROM bars WHERE LOWER(city) LIKE LOWER(%s) LIMIT 500"
+        query = "SELECT * FROM bars WHERE LOWER(addr_city) LIKE LOWER(%s) LIMIT 500"
         results = Database.query(query, (f"%{city}%",))
         
         if not results:
