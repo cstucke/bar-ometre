@@ -28,5 +28,5 @@ class Bar:
             'website': self.website,
             'opening_hours': self.opening_hours,
             'latitude': self.latitude,
-            'longitude': self.longitude
+            'longitude': self.longtitude
         }
