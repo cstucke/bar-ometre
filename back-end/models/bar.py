@@ -30,3 +30,4 @@ class Bar:
             'latitude': self.latitude,
             'longitude': self.longtitude
         }
+        

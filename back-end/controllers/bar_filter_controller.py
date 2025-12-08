@@ -26,9 +26,13 @@ class FilterController:
 
     @staticmethod
     def get_bars_by_arrondissement(arrondissement):
-
         try:
             bars = FilterService.get_bars_by_arrondissement(arrondissement)
-            return jsonify(bars), 200
+            
+            return jsonify({
+                'success': True,
+                'data': bars,
+                'count': len(bars) if bars else 0
+            }), 200
         except Exception as error:
-            return jsonify({'message': str(error)}), 500
+            return jsonify({'success': False, 'message': str(error)}), 500
