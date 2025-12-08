@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paris Bars Discovery</title>
+    <title>Bar-omètre</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
@@ -26,10 +26,11 @@
                 </option>
             {% endfor %}
         </select>
+
         <label class="toggle-label">
-        <input type="checkbox" name="clustering" value="yes"
-        {% if clustering_enabled %}checked{% endif %}>
-        Cluster Pins
+            <input type="checkbox" name="clustering" value="yes"
+            {% if clustering_enabled %}checked{% endif %}>
+            Cluster Pins
         </label>
         <button type="submit">Search</button>
     </form>
@@ -46,14 +47,23 @@
         {% if bars %}
             {% for bar in bars %}
             <div class="bar-card">
-                <div class="bar-name">{{ bar['name'] }}</div>
-                <div class="bar-details">
-                    📍 {{ bar['street'] }} {{ bar['house_number'] }}, {{ bar['postcode'] }} {{ bar['city'] }}<br>
-                    {% if bar['phone'] %}📞 {{ bar['phone'] }}<br>{% endif %}
-                    {% if bar['opening_hours'] %}⏰ {{ bar['opening_hours'] }}<br>{% endif %}
-                    {% if bar['website'] %}
-                        🔗 <a href="{{ bar['website'] }}" target="_blank" class="bar-link">Visit Website</a>
-                    {% endif %}
+                <div class="bar-img-container">
+                    <img src="https://loremflickr.com/320/240/bar,pub,cocktail?lock={{ bar['id'] }}" alt="Bar Image" loading="lazy">
+                </div>
+
+                <div class="bar-info">
+                    <div class="bar-name">{{ bar['name'] }}</div>
+                    <div class="bar-details">
+                        📍 {{ bar['street'] }} {{ bar['house_number'] }}, {{ bar['postcode'] }}<br>
+                        {% if bar['phone'] %}📞 {{ bar['phone'] }}<br>{% endif %}
+
+                        <div class="bar-actions">
+                            {% if bar['website'] %}
+                                <a href="{{ bar['website'] }}" target="_blank" class="bar-link">Website</a>
+                            {% endif %}
+                            <a href="https://www.google.com/maps/search/?api=1&query={{ bar['name'] }}+{{ bar['city'] }}" target="_blank" class="bar-link">Directions</a>
+                        </div>
+                    </div>
                 </div>
             </div>
             {% endfor %}

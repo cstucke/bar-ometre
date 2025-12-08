@@ -59,7 +59,10 @@ button:hover { background-color: #2980b9; }
 .map-section iframe {
     width: 100% !important;
     height: 100% !important;
-    position: relative;
+    padding: 0 !important;
+    position: relative !important;
+    border: none;
+    display: block;
 }
 
 /* List Section */
@@ -75,12 +78,16 @@ button:hover { background-color: #2980b9; }
 /* Bar Cards */
 .bar-card {
     background: white;
-    padding: 15px;
     margin-bottom: 15px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     transition: transform 0.2s;
     border-left: 4px solid #3498db;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    padding: 0;
+    height: 140px;
 }
 
 .bar-card:hover {
@@ -88,10 +95,33 @@ button:hover { background-color: #2980b9; }
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
+.bar-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.bar-info {
+    padding: 12px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    width: 100%;
+}
+
 .bar-name { font-size: 1.1rem; font-weight: bold; color: #2c3e50; margin-bottom: 5px; }
+.bar-actions {margin-top: 8px; display: flex; gap: 10px; }
 .bar-details { font-size: 0.9rem; color: #666; line-height: 1.5; }
-.bar-link { color: #3498db; text-decoration: none; font-weight: 500; }
-.bar-link:hover { text-decoration: underline; }
+.bar-link { color: #3498db;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    background: #f0f7fc;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: background 0.2s; }
+.bar-link:hover { background: #dbeafe; text-decoration: none; }
 
 #loading-overlay {
     position: fixed;
