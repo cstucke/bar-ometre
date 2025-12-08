@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paris Bars Discovery</title>
+</head>
+<body>
+<h1>Paris Bars Discovery</h1>
+<form method="POST" action="/bars/search">
+    <input type="text" name="name" placeholder="Search by name">
+    <input type="text" name="city" placeholder="Filter by city">
+    <input type="text" name="arrondissement" placeholder="Filter by arrondissement (01-20)">
+    <button type="submit">Search</button>
+</form>
+<div style="display: flex; gap: 20px;">
+    <div style="flex: 1; height: 600px;">
+        <h2>Map</h2>
+        {{ map | safe }}
+    </div>
+    
+    <div style="flex: 1;">
+        <h2>Bars List</h2>
+        <ul>
+            {% for bar in bars %}
+            <li>
+                <strong>{{ bar['name'] }}</strong><br>
+                {{ bar['street'] }} {{ bar['house_number'] }}<br>
+                {{ bar['postcode'] }} {{ bar['city'] }}<br>
+                {% if bar['phone'] %}Phone: {{ bar['phone'] }}<br>{% endif %}
+                {% if bar['website'] %}<a href="{{ bar['website'] }}" target="_blank">Website</a><br>{% endif %}
+                {% if bar['opening_hours'] %}Hours: {{ bar['opening_hours'] }}{% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+</body>
+</html>

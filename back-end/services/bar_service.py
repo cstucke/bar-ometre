@@ -15,7 +15,7 @@ class BarService:
             params.append(f"%{name}%")
         
         if city:
-            query += " AND LOWER(city) LIKE LOWER(%s)"
+            query += " AND LOWER(addr_city) LIKE LOWER(%s)"
             params.append(f"%{city}%")
         
         query += " LIMIT 500"

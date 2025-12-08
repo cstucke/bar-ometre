@@ -5,7 +5,7 @@ filter_bp = Blueprint('filters', __name__)
 
 @filter_bp.route('/cities', methods=['GET'])
 def get_bars():
-    return FilterController.get_bars()
+    return FilterController.get_cities()
 
 @filter_bp.route('/stats', methods=['GET'])
 def get_statistics():

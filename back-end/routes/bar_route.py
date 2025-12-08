@@ -14,7 +14,7 @@ def get_bar_detail(bar_id):
     return BarController.get_bar_detail(bar_id)
 
 
-@bar_bp.route('/bars/search', methods=['POST'])
+@bar_bp.route('/search', methods=['POST'])
 def search_bars():
     return BarController.search_bars()
 

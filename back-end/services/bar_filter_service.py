@@ -33,6 +33,7 @@ class FilterService:
     @staticmethod
     def get_bars_by_arrondissement(arrondissement):
 
-        query = "SELECT * FROM bars WHERE postcode LIKE %s LIMIT 500"
-        results = Database.query(query, (f"750{arrondissement}%",))
+        postcode = f"750{arrondissement}"
+        query = "SELECT * FROM bars WHERE addr_postcode = %s LIMIT 500"
+        results = Database.query(query, (postcode,))
         return results if results else []
