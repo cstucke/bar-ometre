@@ -26,7 +26,11 @@
                 </option>
             {% endfor %}
         </select>
-
+        <label class="toggle-label">
+        <input type="checkbox" name="clustering" value="yes"
+        {% if clustering_enabled %}checked{% endif %}>
+        Cluster Pins
+        </label>
         <button type="submit">Search</button>
     </form>
 </header>

@@ -1,18 +1,23 @@
 from flask import Blueprint, render_template, request
 import requests
 import folium
+from folium.plugins import MarkerCluster
 
 frontend_bp = Blueprint('frontend', __name__)
 API_BASE = 'http://localhost:5000/api'
 
-def create_map(bars):
+def create_map(bars, use_clustering=True):
 
     map_obj = folium.Map(
         location=[48.8566, 2.3522],
         zoom_start=12,
-        tiles='OpenStreetMap'
+        tiles='CartoDB positron'
     )
-    
+
+    if use_clustering:
+        marker_container = MarkerCluster().add_to(map_obj)
+    else:
+        marker_container = map_obj
 
     for bar in bars:
 
@@ -33,41 +38,39 @@ def create_map(bars):
         phone = bar.get('phone', '')
         website = bar.get('website', '')
         opening_hours = bar.get('opening_hours', '')
-        
+
         popup_text = f"""
-            <b>{name}</b><br>
-            {street} {house_number}<br>
-            {postcode} {city}<br>
-            {f"Phone: {phone}<br>" if phone else ''}
-            {f"<a href='{website}' target='_blank'>Website</a><br>" if website else ''}
-            {f"Hours: {opening_hours}" if opening_hours else ''}
-        """
-        
-        folium.CircleMarker(
+                <div style="width: 200px; font-family: sans-serif;">
+                    <h4 style="margin: 0 0 8px 0; color: #2c3e50;">{name}</h4>
+                    <p style="margin: 0; font-size: 13px;">
+                        {street} {house_number}<br>
+                        {postcode} {city}
+                    </p>
+                    {f'<p style="margin: 5px 0 0 0;">📞 {phone}</p>' if phone else ''}
+                    {f'<div style="margin-top: 8px;"><a href="{website}" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">Visit Website &rarr;</a></div>' if website else ''}
+                </div>
+            """
+
+        folium.Marker(
             location=[lat, lng],
-            radius=6,
-            popup=popup_text,
-            color='#667eea',
-            fill=True,
-            fillColor='#667eea',
-            fillOpacity=0.8,
-            weight=2
-        ).add_to(map_obj)
+            popup=folium.Popup(popup_text, max_width=250),
+            icon=folium.Icon(color='darkblue', icon='glass-martini', prefix='fa'),  # <--- 'fa' = FontAwesome
+            tooltip=name  # Shows name on hover!
+        ).add_to(marker_container)
     
     return map_obj._repr_html_()
 
 @frontend_bp.route('/', methods=['GET'])
 def index():
-
     try:
 
         response = requests.get(f'{API_BASE}/bars')
         data = response.json()
 
         bars = data.get('data', []) if isinstance(data, dict) else data
-        
-        map_html = create_map(bars)
-        
+
+        map_html = create_map(bars, use_clustering=True)
+
         return render_template('map.html', map=map_html, bars=bars)
     except Exception as e:
         return f"Error: {str(e)}", 500
@@ -80,6 +83,7 @@ def search():
         city = request.form.get('city', '')
         arrondissement = request.form.get('arrondissement', '')
 
+        clustering_enabled = request.form.get('clustering') == 'yes'
 
         if arrondissement:
             
@@ -121,9 +125,9 @@ def search():
             else:
                 bars_dicts.append(bar)
 
-        map_html = create_map(bars_dicts)
-        
-        return render_template('map.html', map=map_html, bars=bars_dicts)
+        map_html = create_map(bars_dicts, use_clustering=clustering_enabled)
+
+        return render_template('map.html', map=map_html, bars=bars_dicts, clustering_enable=clustering_enabled)
     except Exception as e:
         print(f"Error: {str(e)}")
         import traceback
