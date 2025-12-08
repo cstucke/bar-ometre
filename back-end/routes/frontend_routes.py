@@ -11,7 +11,8 @@ def create_map(bars, use_clustering=True):
     map_obj = folium.Map(
         location=[48.8566, 2.3522],
         zoom_start=12,
-        tiles='CartoDB positron'
+        tiles='CartoDB positron',
+        height='100%'
     )
 
     if use_clustering:

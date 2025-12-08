@@ -52,6 +52,14 @@ button:hover { background-color: #2980b9; }
 .map-section {
     flex: 2;
     height: 100%;
+    position: relative;
+}
+
+.map-section div,
+.map-section iframe {
+    width: 100% !important;
+    height: 100% !important;
+    position: relative;
 }
 
 /* List Section */
@@ -127,3 +135,4 @@ button:hover { background-color: #2980b9; }
     width: 16px;
     height: 16px;
 }
+
