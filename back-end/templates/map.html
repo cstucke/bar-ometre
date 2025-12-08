@@ -8,8 +8,12 @@
 </head>
 <body>
 
+<div id="loading-overlay">
+    <div class="spinner"></div>
+</div>
+
 <header>
-    <h1>🍷 Paris Bars Discovery</h1>
+    <h1>🍷 Bar-omètre</h1>
     <form method="POST" action="/bars/search" class="search-container">
         <input type="text" name="name" placeholder="Search by name..." value="{{ request.form.name }}">
         <input type="text" name="city" placeholder="City (e.g. Paris)" value="{{ request.form.city }}">
@@ -54,6 +58,12 @@
         {% endif %}
     </div>
 </div>
+
+<script>
+    function showLoader() {
+        document.getElementById('loading-overlay').style.display = 'flex';
+    }
+</script>
 
 </body>
 </html>
