@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bar-omètre</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Bar-ometre</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 
@@ -13,70 +16,198 @@
 </div>
 
 <header>
-    <h1>🍷 Bar-omètre</h1>
-    <form method="POST" action="/bars/search" class="search-container">
-        <input type="text" name="name" placeholder="Search by name..." value="{{ request.form.name }}">
-        <input type="text" name="city" placeholder="City (e.g. Paris)" value="{{ request.form.city }}">
+    <h1>Bar-ometre</h1>
+    <form id="search-form" class="search-container">
+        <input type="text" name="name" placeholder="Search by name...">
+        <input type="text" name="city" placeholder="City (e.g. Paris)">
 
         <select name="arrondissement">
             <option value="">Any Arrondissement</option>
-            {% for i in range(1, 21) %}
-                <option value="{{ '%02d' % i }}" {% if request.form.arrondissement == ('%02d' % i) %}selected{% endif %}>
-                    {{ i }}e Arr.
-                </option>
-            {% endfor %}
         </select>
 
         <label class="toggle-label">
-            <input type="checkbox" name="clustering" value="yes"
-            {% if clustering_enabled %}checked{% endif %}>
+            <input type="checkbox" name="clustering" value="yes" checked>
             Cluster Pins
         </label>
         <button type="submit">Search</button>
     </form>
 </header>
 
-<div class="main-container">
-    <div class="map-section">
-        {{ map | safe }}
-    </div>
+<main class="main-container">
+    <section class="map-section">
+        <div id="map"></div>
+    </section>
 
-    <div class="list-section">
-        <h2>Found {{ bars|length }} Bars</h2>
+    <aside class="list-section">
+        <h2 id="result-count">Found 0 Bars</h2>
+        <div id="bar-list"></div>
+    </aside>
+</main>
 
-        {% if bars %}
-            {% for bar in bars %}
-            <div class="bar-card">
-                <div class="bar-img-container">
-                    <img src="https://loremflickr.com/320/240/bar,pub,cocktail?lock={{ bar['id'] }}" alt="Bar Image" loading="lazy">
-                </div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+<script>
+    const form = document.querySelector("#search-form");
+    const loadingOverlay = document.querySelector("#loading-overlay");
+    const resultCount = document.querySelector("#result-count");
+    const barList = document.querySelector("#bar-list");
+    const arrondissementSelect = form.elements.arrondissement;
 
-                <div class="bar-info">
-                    <div class="bar-name">{{ bar['name'] }}</div>
-                    <div class="bar-details">
-                        📍 {{ bar['street'] }} {{ bar['house_number'] }}, {{ bar['postcode'] }}<br>
-                        {% if bar['phone'] %}📞 {{ bar['phone'] }}<br>{% endif %}
+    const map = L.map("map").setView([48.8566, 2.3522], 12);
+    let markerLayer = L.markerClusterGroup();
+    map.addLayer(markerLayer);
 
-                        <div class="bar-actions">
-                            {% if bar['website'] %}
-                                <a href="{{ bar['website'] }}" target="_blank" class="bar-link">Website</a>
-                            {% endif %}
-                            <a href="https://www.google.com/maps/search/?api=1&query={{ bar['name'] }}+{{ bar['city'] }}" target="_blank" class="bar-link">Directions</a>
+    L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+        attribution: "&copy; OpenStreetMap contributors &copy; CARTO",
+        maxZoom: 20
+    }).addTo(map);
+
+    for (let index = 1; index <= 20; index += 1) {
+        const value = String(index).padStart(2, "0");
+        const option = document.createElement("option");
+        option.value = value;
+        option.textContent = `${index}e Arr.`;
+        arrondissementSelect.appendChild(option);
+    }
+
+    function setLoading(isLoading) {
+        loadingOverlay.style.display = isLoading ? "flex" : "none";
+    }
+
+    function escapeHtml(value) {
+        return String(value ?? "")
+            .replaceAll("&", "&amp;")
+            .replaceAll("<", "&lt;")
+            .replaceAll(">", "&gt;")
+            .replaceAll('"', "&quot;")
+            .replaceAll("'", "&#039;");
+    }
+
+    function buildQuery(params) {
+        const query = new URLSearchParams();
+
+        Object.entries(params).forEach(([key, value]) => {
+            if (value) {
+                query.set(key, value);
+            }
+        });
+
+        return query.toString();
+    }
+
+    function getBarAddress(bar) {
+        return [bar.street, bar.house_number, bar.postcode, bar.city].filter(Boolean).join(" ");
+    }
+
+    function renderList(bars) {
+        resultCount.textContent = `Found ${bars.length} Bars`;
+
+        if (!bars.length) {
+            barList.innerHTML = "<p>No bars found. Try a different search.</p>";
+            return;
+        }
+
+        barList.innerHTML = bars.map((bar) => {
+            const website = bar.website
+                ? `<a href="${escapeHtml(bar.website)}" target="_blank" rel="noreferrer" class="bar-link">Website</a>`
+                : "";
+            const directionsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${bar.name || ""} ${bar.city || ""}`)}`;
+
+            return `
+                <article class="bar-card">
+                    <div class="bar-img-container">
+                        <img src="https://loremflickr.com/320/240/bar,pub,cocktail?lock=${escapeHtml(bar.id)}" alt="" loading="lazy">
+                    </div>
+
+                    <div class="bar-info">
+                        <div class="bar-name">${escapeHtml(bar.name || "Unknown")}</div>
+                        <div class="bar-details">
+                            ${escapeHtml(getBarAddress(bar))}<br>
+                            ${bar.phone ? `${escapeHtml(bar.phone)}<br>` : ""}
+
+                            <div class="bar-actions">
+                                ${website}
+                                <a href="${directionsUrl}" target="_blank" rel="noreferrer" class="bar-link">Directions</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            {% endfor %}
-        {% else %}
-            <p>No bars found. Try a different search!</p>
-        {% endif %}
-    </div>
-</div>
-
-<script>
-    function showLoader() {
-        document.getElementById('loading-overlay').style.display = 'flex';
+                </article>
+            `;
+        }).join("");
     }
+
+    function renderMap(bars, useClustering) {
+        map.removeLayer(markerLayer);
+        markerLayer = useClustering ? L.markerClusterGroup() : L.layerGroup();
+
+        const bounds = [];
+
+        bars.forEach((bar) => {
+            const lat = Number(bar.latitude);
+            const lng = Number(bar.longitude);
+
+            if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
+                return;
+            }
+
+            const popup = `
+                <div class="map-popup">
+                    <h4>${escapeHtml(bar.name || "Unknown")}</h4>
+                    <p>${escapeHtml(getBarAddress(bar))}</p>
+                    ${bar.phone ? `<p>${escapeHtml(bar.phone)}</p>` : ""}
+                    ${bar.website ? `<a href="${escapeHtml(bar.website)}" target="_blank" rel="noreferrer">Visit Website</a>` : ""}
+                </div>
+            `;
+
+            L.marker([lat, lng]).bindPopup(popup).bindTooltip(bar.name || "Unknown").addTo(markerLayer);
+            bounds.push([lat, lng]);
+        });
+
+        map.addLayer(markerLayer);
+
+        if (bounds.length) {
+            map.fitBounds(bounds, { padding: [30, 30], maxZoom: 15 });
+        }
+    }
+
+    async function loadBars(filters = {}) {
+        setLoading(true);
+
+        try {
+            const query = buildQuery(filters);
+            const response = await fetch(`/api/bars${query ? `?${query}` : ""}`);
+            const payload = await response.json();
+
+            if (!response.ok) {
+                throw new Error(payload.message || "Unable to load bars");
+            }
+
+            const bars = payload.data || [];
+            renderMap(bars, form.elements.clustering.checked);
+            renderList(bars);
+        } catch (error) {
+            barList.innerHTML = `<p>${escapeHtml(error.message)}</p>`;
+            resultCount.textContent = "Found 0 Bars";
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        loadBars({
+            name: form.elements.name.value.trim(),
+            city: form.elements.city.value.trim(),
+            arrondissement: form.elements.arrondissement.value
+        });
+    });
+
+    form.elements.clustering.addEventListener("change", () => {
+        form.requestSubmit();
+    });
+
+    loadBars();
 </script>
 
 </body>
