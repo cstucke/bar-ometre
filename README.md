@@ -12,6 +12,12 @@ Bar-omètre is an intuitive local bar tracking web application designed to provi
 
 ### Authors
 
+#### Current Contributors
+- [Charles Stucke](https://github.com/cstucke)
+- [Jakub Motysia](https://github.com/jakub-tenders)
+- [Armand Vieau](https://github.com/ALTAR333)
+
+#### Original Contributors
 - [Charles Stucke](https://github.com/cstucke)
 - [Ivan Bomko](https://github.com/ivanbom1)
 - [Jakub Motysia](https://github.com/jakub-tenders)
