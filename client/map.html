@@ -53,13 +53,13 @@
     const barList = document.querySelector("#bar-list");
     const arrondissementSelect = form.elements.arrondissement;
 
-    const map = L.map("map").setView([48.8566, 2.3522], 12);
-    let markerLayer = L.markerClusterGroup();
+    const map = L.map("map", { maxZoom: 19 }).setView([48.8566, 2.3522], 12);
+    let markerLayer = L.markerClusterGroup({ maxClusterRadius: 80 });
     map.addLayer(markerLayer);
 
     L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
         attribution: "&copy; OpenStreetMap contributors &copy; CARTO",
-        maxZoom: 20
+        maxZoom: 19
     }).addTo(map);
 
     for (let index = 1; index <= 20; index += 1) {
@@ -138,7 +138,7 @@
 
     function renderMap(bars, useClustering) {
         map.removeLayer(markerLayer);
-        markerLayer = useClustering ? L.markerClusterGroup() : L.layerGroup();
+        markerLayer = useClustering ? L.markerClusterGroup({ maxClusterRadius: 80 }) : L.layerGroup();
 
         const bounds = [];
 
