@@ -7,11 +7,10 @@ export const config = {
     port: process.env.PORT || 3000,
     nodeEnv: process.env.NODE_ENV || "development",
   },
-  postgres: {
-    host: process.env.POSTGRES_HOST,
-    port: Number(process.env.POSTGRES_PORT || 5432),
-    database: process.env.POSTGRES_DB,
-    user: process.env.POSTGRES_USER,
-    password: process.env.POSTGRES_PASSWORD,
+
+
+  mongodb: {
+    uri:    process.env.MONGODB_URI ?? (() => { throw new Error("MONGODB_URI is not set in .env") })(),
+    dbName: process.env.MONGODB_DB  ?? (() => { throw new Error("MONGODB_DB is not set in .env") })(),
   },
 };
