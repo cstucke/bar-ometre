@@ -1,7 +1,15 @@
+# Environment variables
 .env
+node_modules/
+server/node_modules/
 venv
 .vscode/
 .idea/
 .DS_Store
+
+#Python dev ignores
 __pycache__/
 *.pyc
+
+#Miscellaneous
+CODEX.md
