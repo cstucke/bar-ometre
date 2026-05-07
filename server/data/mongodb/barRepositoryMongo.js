@@ -50,8 +50,31 @@ export async function findBarsByCity(city) {
   return findAllBars({ city });
 }
 
-export async function findBarsByArrondissement(arrondissement) {
-  return findAllBars({ arrondissement });
+export async function findBarsByArrondissement() {
+  const pipeline = [
+    {
+      $match: {
+        "address.postcode": { $regex: /^75\d{3}$/ }
+      }
+    },
+    {
+      $group: {
+        _id: "$address.postcode",
+        count: { $sum: 1 },
+        bars: { $push: { name: "$name", website: "$contact.website" } }
+      }
+    },
+    {
+      $addFields: {
+        arrondissement: {
+          $toInt: { $substr: ["$_id", 3, 2] }
+        }
+      }
+    },
+    { $sort: { arrondissement: 1 } }
+  ];
+
+  return barsCollection.aggregate(pipeline).toArray();
 }
 
 export async function findNearby({ lng, lat, maxDistance = 1000, limit = 50 }) {
@@ -76,12 +99,26 @@ export async function findFilterOptions() {
 }
 
 export async function findStatistics() {
-  const [total_bars, bars_with_coordinates, cities] = await Promise.all([
-    barsCollection.countDocuments(),
-    barsCollection.countDocuments({ "location.coordinates": { $exists: true } }),
-    barsCollection.distinct("address.city", { "address.city": { $ne: null } }),
-  ]);
-  return { total_bars, total_cities: cities.length, bars_with_coordinates };
+  const pipeline = [
+    {
+      $group: {
+        _id: null,
+        total_bars: { $sum: 1 },
+        bars_with_coordinates: {
+          $sum: { $cond: [{ $ifNull: ["$location.coordinates", false] }, 1, 0] }
+        },
+        bars_with_website: {
+          $sum: { $cond: [{ $ifNull: ["$contact.website", false] }, 1, 0] }
+        },
+        bars_with_phone: {
+          $sum: { $cond: [{ $ifNull: ["$contact.phone", false] }, 1, 0] }
+        }
+      }
+    }
+  ];
+
+  const [result] = await barsCollection.aggregate(pipeline).toArray();
+  return result;
 }
 
 export async function findBarsByIds(barIds) {
