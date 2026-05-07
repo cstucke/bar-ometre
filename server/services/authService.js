@@ -3,10 +3,11 @@ import jwt from 'jsonwebtoken';
 import { v4 as uuidv4 } from 'uuid';
 import neo4jDriver from '../config/neo4j.js';
 
-
-export async function registerUser(username, email, password) {
+class AuthService {
+  async registerUser(username, email, password) {
     const session = neo4jDriver.session();
     try {
+
       const checkUser = await session.run(
         `MATCH (u:User {email: $email}) RETURN u`,
         { email }
@@ -36,9 +37,9 @@ export async function registerUser(username, email, password) {
     } finally {
       await session.close();
     }
-};
+  }
 
-export async function loginUser(email, password) {
+  async loginUser(email, password) {
     const session = neo4jDriver.session();
     try {
       const result = await session.run(
@@ -63,10 +64,13 @@ export async function loginUser(email, password) {
     } finally {
       await session.close();
     }
-};
+  }
 
-export function generateToken(userId, username) {
+  generateToken(userId, username) {
     return jwt.sign({ userId, username }, process.env.JWT_SECRET, {
       expiresIn: '30d',
     });
-};
+  }
+}
+
+export default new AuthService();
