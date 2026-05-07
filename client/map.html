@@ -141,7 +141,7 @@
         const email = e.target.email.value;
         const password = e.target.password.value;
         try {
-            const res = await fetch('/auth/login', {
+            const res = await fetch('/api/auth/login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, password })
@@ -168,7 +168,7 @@
         const email = e.target.email.value;
         const password = e.target.password.value;
         try {
-            const res = await fetch('/auth/register', {
+            const res = await fetch('/api/auth/register', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ username: usernameInput, email, password })
@@ -190,13 +190,14 @@
     async function performSocialAction(endpoint, mongoId) {
         if (!token) return alert("Please login first!");
         try {
-            const res = await fetch(endpoint, {
+            // ADDED /api prefix here
+            const res = await fetch(`/api${endpoint}`, {
                 method: 'POST',
                 headers: { 
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}` 
                 },
-                body: JSON.stringify({ mongoId }) // sending the bar ID to neo4j
+                body: JSON.stringify({ mongoId })
             });
             const data = await res.json();
             if(data.success) { alert("Action successful!"); }
@@ -312,7 +313,7 @@
     async function loadTrendingBars() {
         setLoading(true);
         try {
-            const bars = await fetchFromApi('/social/trending');
+            const bars = await fetchFromApi('/api/social/trending');
             renderMap(bars, form.elements.clustering.checked);
             renderList(bars);
             resultCount.textContent = `Top ${bars.length} Trending Bars 🔥`;
@@ -325,7 +326,7 @@
         if (!token) return alert("Log in to see recommendations!");
         setLoading(true);
         try {
-            const bars = await fetchFromApi('/social/recommendations/friends', {
+            const bars = await fetchFromApi('/api/social/recommendations/friends', {
                 'Authorization': `Bearer ${token}`
             });
             renderMap(bars, form.elements.clustering.checked);

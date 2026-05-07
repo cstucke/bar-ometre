@@ -10,6 +10,7 @@ function buildQuery({ name, city, arrondissement } = {}) {
   return query;
 }
 
+
 function toDTO(doc) {
   if (!doc) return null;
   return {
@@ -49,8 +50,31 @@ export async function findBarsByCity(city) {
   return findAllBars({ city });
 }
 
-export async function findBarsByArrondissement(arrondissement) {
-  return findAllBars({ arrondissement });
+export async function findBarsByArrondissement() {
+  const pipeline = [
+    {
+      $match: {
+        "address.postcode": { $regex: /^75\d{3}$/ }
+      }
+    },
+    {
+      $group: {
+        _id: "$address.postcode",
+        count: { $sum: 1 },
+        bars: { $push: { name: "$name", website: "$contact.website" } }
+      }
+    },
+    {
+      $addFields: {
+        arrondissement: {
+          $toInt: { $substr: ["$_id", 3, 2] }
+        }
+      }
+    },
+    { $sort: { arrondissement: 1 } }
+  ];
+
+  return barsCollection.aggregate(pipeline).toArray();
 }
 
 export async function findNearby({ lng, lat, maxDistance = 1000, limit = 50 }) {
@@ -90,4 +114,34 @@ export async function findStatistics() {
     barsCollection.distinct("address.city", { "address.city": { $ne: null } }),
   ]);
   return { total_bars, total_cities: cities.length, bars_with_coordinates };
+}
+  const pipeline = [
+    {
+      $group: {
+        _id: null,
+        total_bars: { $sum: 1 },
+        bars_with_coordinates: {
+          $sum: { $cond: [{ $ifNull: ["$location.coordinates", false] }, 1, 0] }
+        },
+        bars_with_website: {
+          $sum: { $cond: [{ $ifNull: ["$contact.website", false] }, 1, 0] }
+        },
+        bars_with_phone: {
+          $sum: { $cond: [{ $ifNull: ["$contact.phone", false] }, 1, 0] }
+        }
+      }
+    }
+  ];
+
+  const [result] = await barsCollection.aggregate(pipeline).toArray();
+  return result;
+}
+
+export async function findBarsByIds(barIds) {
+  try {
+    return await Bar.find({ _id: { $in: barIds } });
+  } catch (error) {
+    console.error("Error fetching populated bars:", error);
+    throw new Error('Could not fetch complete bar details');
+  }
 }
