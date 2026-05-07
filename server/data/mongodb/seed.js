@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const require = createRequire(import.meta.url);
-const bars = require("../../database/paris_bars.json");
+const bars = require("../../../database/paris_bars.json");
 
 const client = new MongoClient(process.env.MONGODB_URI);
 const db     = client.db(process.env.MONGODB_DB);
