@@ -1,0 +1,1409 @@
+[
+  {
+    "name": "Café Charbon",
+    "address": {
+      "street": "Rue Oberkampf",
+      "housenumber": "109",
+      "postcode": "75011",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 1 43 57 55 13",
+      "website": "https://www.lecafecharbon.fr/"
+    },
+    "opening_hours": "Mo-Su 08:00-02:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.3779133,
+        48.8658464
+      ]
+    }
+  },
+  {
+    "name": "Chair de poule",
+    "address": {
+      "street": "Rue Saint-Maur",
+      "housenumber": "141",
+      "postcode": "75011",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 1 43 38 89 06",
+      "website": "http://chairdepouleparis.com"
+    },
+    "opening_hours": "Mo-Sa 08:00-18:00; Su 17:00-24:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.3754943,
+        48.8676561
+      ]
+    }
+  },
+  {
+    "name": "L'Assassin",
+    "address": {
+      "street": "Rue Jean-Pierre Timbaud",
+      "housenumber": "99",
+      "postcode": "75011",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 1 49 23 08 96",
+      "website": "https://www.lassassin.fr"
+    },
+    "opening_hours": "Mo-Su 09:00-02:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.3800769,
+        48.8688144
+      ]
+    }
+  },
+  {
+    "name": "Rosa Bonheur",
+    "address": {
+      "street": "Avenue de la Cascade",
+      "housenumber": "2",
+      "postcode": "75019",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+331 42 00 00 45",
+      "website": "https://rosabonheur.fr/rosa-buttes"
+    },
+    "opening_hours": "Th-Su 12:00-00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.3862299,
+        48.8799811
+      ]
+    }
+  },
+  {
+    "name": "La Frange",
+    "address": {
+      "street": "Rue Jean Pierre timbaud",
+      "housenumber": "61",
+      "postcode": "75011",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 1 82 09 87 29",
+      "website": "https://www.facebook.com/LaFrangebar/"
+    },
+    "opening_hours": "Mo-Su 18:00-02:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.3527448,
+        48.8501884
+      ]
+    }
+  },
+  {
+    "name": "Folie's Café",
+    "address": {
+      "street": "Rue Geoffroy Marie",
+      "housenumber": "16",
+      "postcode": "75009",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 1 48 24 04 91",
+      "website": "https://www.foliescafe.fr/"
+    },
+    "opening_hours": "Mo-Fr 00:00-01:00, 08:00-23:59; Sa-Su 00:00-02:00, 09:00-23:59",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.3447458,
+        48.8738228
+      ]
+    }
+  },
+  {
+    "name": "Les Petites Flèches",
+    "address": {
+      "street": "Boulevard de Clichy",
+      "housenumber": "49",
+      "postcode": "75009",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 1 53 62 19 05",
+      "website": "https://lespetitesfleches.com/"
+    },
+    "opening_hours": "Mo 18:00-24:00; Tu 18:00-24:00; We,Th 00:00-01:00,18:00-24:00; Fr 00:00-02:00,18:00-24:00; Sa 00:00-02:00,15:30-24:00; Su 00:00-02:00,15:30-23:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.3338337,
+        48.8831829
+      ]
+    }
+  },
+  {
+    "name": "Quartier Lorette",
+    "address": {
+      "street": "Rue de Châteaudun",
+      "housenumber": "19",
+      "postcode": "75009",
+      "city": "Paris 9eme Arrondissement"
+    },
+    "contact": {
+      "phone": "+33 1 40 36 14 98",
+      "website": "https://www.quartierlorette.com/"
+    },
+    "opening_hours": "Mo-Fr 07:30-01:00; Sa-Su 08:00-01:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.3388379,
+        48.875855
+      ]
+    }
+  },
+  {
+    "name": "Le Blomet",
+    "address": {
+      "street": "Rue Blomet",
+      "housenumber": "102",
+      "postcode": "75015",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 9 54 20 66 97",
+      "website": "https://leblomet-restaurant.fr/"
+    },
+    "opening_hours": "Mo-Sa 07:00-01:00; Su 08:00-01:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.2998486,
+        48.8407376
+      ]
+    }
+  },
+  {
+    "name": "Le Motel",
+    "address": {
+      "street": "Passage Josset",
+      "housenumber": "8",
+      "postcode": "75011",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 1 58 30 84 68",
+      "website": "https://www.lemotel.fr/"
+    },
+    "opening_hours": "Tu-Su 18:00-01:45",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.3765031,
+        48.8527026
+      ]
+    }
+  },
+  {
+    "name": "L'Alimentation générale",
+    "address": {
+      "street": "Rue Jean-Pierre Timbaud",
+      "housenumber": "64",
+      "postcode": "75011",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 9 81 86 42 50",
+      "website": "https://www.alimentation-generale.net/"
+    },
+    "opening_hours": "We-Th 19:00-02:00; Fr-Sa 19:00-05:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.374452,
+        48.8668594
+      ]
+    }
+  },
+  {
+    "name": "La Fine Mousse",
+    "address": {
+      "street": "Avenue Jean Aicard",
+      "housenumber": "6",
+      "postcode": "75011",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33148064094",
+      "website": "https://www.lafinemousse.fr/"
+    },
+    "opening_hours": "Mo-Fr 17:00+; Sa-Su 16:00+",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.3818083,
+        48.8648418
+      ]
+    }
+  },
+  {
+    "name": "Oculto",
+    "address": {
+      "street": "Rue Quincampoix",
+      "housenumber": "27",
+      "postcode": "75004",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 9 74 73 56 57",
+      "website": "https://www.ocultoparis.fr/"
+    },
+    "opening_hours": "Mo, Su 16:30-24:00; Tu-Fr 16:30-02:00; Sa 14:30-02:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.3500446,
+        48.8601378
+      ]
+    }
+  },
+  {
+    "name": "Le Président",
+    "address": {
+      "street": "Avenue Franklin Delano Roosevelt",
+      "housenumber": "59",
+      "postcode": "75008",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+331 43 59 80 74",
+      "website": "https://lepresident.paris/"
+    },
+    "opening_hours": "Mo-Fr 07:00-23:59; Sa-Su 10:00-23:59",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.3098888,
+        48.8714461
+      ]
+    }
+  },
+  {
+    "name": "N'Importe Quoi",
+    "address": {
+      "street": "Rue du Roule",
+      "housenumber": "16",
+      "postcode": "75001",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 1 40 26 29 71",
+      "website": "https://www.nimportequoi.fr/"
+    },
+    "opening_hours": "Mo-Su 18:00-05:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.3438855,
+        48.8607815
+      ]
+    }
+  },
+  {
+    "name": "Le refuge",
+    "address": {
+      "street": "Place de la Bataille de Stalingrad",
+      "housenumber": "6-8",
+      "postcode": "75019",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 1 80483340",
+      "website": "https://larotondestalingrad.com/"
+    },
+    "opening_hours": "Mo-Su 08:00-02:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.3695698,
+        48.8835848
+      ]
+    }
+  },
+  {
+    "name": "Rpr Le Repaire De Charonne",
+    "address": {
+      "street": "Rue de Charonne",
+      "housenumber": "114",
+      "postcode": "75011",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 6 68 02 80 38",
+      "website": "https://lerepairedecharonne.com/"
+    },
+    "opening_hours": "Mo-Su 18:00-02:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.3859794,
+        48.8547583
+      ]
+    }
+  },
+  {
+    "name": "Le Saint-Sauveur",
+    "address": {
+      "street": "Rue des Panoyaux",
+      "housenumber": "11",
+      "postcode": "75020",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 1 42 52 87 60",
+      "website": "https://www.facebook.com/Saint-Sauveur-1564357753854669/"
+    },
+    "opening_hours": "Mo-Su 17:00-02:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.3851161,
+        48.866505
+      ]
+    }
+  },
+  {
+    "name": "Chouff'bar",
+    "address": {
+      "street": "Rue du Pot de Fer",
+      "housenumber": "16",
+      "postcode": "75005",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33619625999",
+      "website": "https://www.facebook.com/chouffpotdefer/"
+    },
+    "opening_hours": "Mo-Su 16:00-02:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.3486829,
+        48.842986
+      ]
+    }
+  },
+  {
+    "name": "La Cantine De Belleville",
+    "address": {
+      "street": "Boulevard de Belleville",
+      "housenumber": "108",
+      "postcode": "75020",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 1 43 15 99 29",
+      "website": "https://lacantinebelleville.fr/"
+    },
+    "opening_hours": "Mo-Su 00:00-02:00, 11:00-23:59",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.3787755,
+        48.8708114
+      ]
+    }
+  },
+  {
+    "name": "Marlusse Et Lapin",
+    "address": {
+      "street": "Rue Germain Pilon",
+      "housenumber": "14",
+      "postcode": "75018",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 1 83 76 02 29",
+      "website": "http://www.marlusselapin.fr"
+    },
+    "opening_hours": "Mo-Su 00:00-02:00, 18:00-23:59",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.3367371,
+        48.8837552
+      ]
+    }
+  },
+  {
+    "name": "Le Comptoir général",
+    "address": {
+      "street": "Quai de Jemmapes",
+      "housenumber": "80",
+      "postcode": "75010",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 1 44 88 24 48",
+      "website": "https://www.lecomptoirgeneral.com/"
+    },
+    "opening_hours": "Mo-Th 18:00-02:00; Fr 16:00-02:00; Sa 14:00-02:00; Su 11:00-01:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.365179,
+        48.8721053
+      ]
+    }
+  },
+  {
+    "name": "Chez Gladines",
+    "address": {
+      "street": "Rue des Halles",
+      "housenumber": "11 bis",
+      "postcode": "75001",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 1 42 21 07 00",
+      "website": "https://chezgladines-leshalles.fr/fr"
+    },
+    "opening_hours": "Mo 12:00-23:30; Tu-Sa 12:00-23:00; Su 11:30-16:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.3463862,
+        48.8599164
+      ]
+    }
+  },
+  {
+    "name": "Aux Trois Violons",
+    "address": {
+      "street": "Rue Saint-Sébastien",
+      "housenumber": "22",
+      "postcode": "75011",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 1 43 57 10 15",
+      "website": "https://www.auxtroisviolons.com/"
+    },
+    "opening_hours": "Mo-Sa 20:00-02:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.3692968,
+        48.8611127
+      ]
+    }
+  },
+  {
+    "name": "Ernest",
+    "address": {
+      "street": "Rue du Commandant René Mouchotte",
+      "housenumber": "35",
+      "postcode": "75014",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 1 43 22 20 12",
+      "website": "https://www.brasserie-ernest.com/"
+    },
+    "opening_hours": "Mo-Su 07:00-02:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.3193494,
+        48.8376807
+      ]
+    }
+  },
+  {
+    "name": "Lulu White",
+    "address": {
+      "street": "Rue Frochot",
+      "housenumber": "12",
+      "postcode": "75009",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 9 83 58 93 32",
+      "website": "http://luluwhite.bar/"
+    },
+    "opening_hours": "Mo-Su 00:00-02:00, 19:00-24:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.3374916,
+        48.8816183
+      ]
+    }
+  },
+  {
+    "name": "Bistrot Le Rez De Chaussée",
+    "address": {
+      "street": "Rue Sorbier",
+      "housenumber": "10",
+      "postcode": "75020",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 1 43 58 30 14",
+      "website": "https://deliveroo.fr/fr/menu/paris/paris-20eme-menilmontant/le-rez-de-chaussee"
+    },
+    "opening_hours": "Mo-Su 12:00-22:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.3899005,
+        48.8680958
+      ]
+    }
+  },
+  {
+    "name": "Le Carmen",
+    "address": {
+      "street": "Rue Duperré",
+      "housenumber": "34",
+      "postcode": "75009",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 1 48 74 33 10",
+      "website": "https://le-carmen.fr/"
+    },
+    "opening_hours": "Tu-Sa 18:00-06:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.3342164,
+        48.8820437
+      ]
+    }
+  },
+  {
+    "name": "Les Petits Crus",
+    "address": {
+      "street": "Rue Saint-Sabin",
+      "housenumber": "13",
+      "postcode": "75011",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33967298933",
+      "website": "https://lespetitscrus.com/"
+    },
+    "opening_hours": "Mo-Sa 18:00-23:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.3718537,
+        48.8553677
+      ]
+    }
+  },
+  {
+    "name": "The Place To... Wagram",
+    "address": {
+      "street": "Avenue de Wagram",
+      "housenumber": "47",
+      "postcode": "75008",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 1 45 74 79 28",
+      "website": "https://www.theplaceto.paris/"
+    },
+    "opening_hours": "Mo-Fr 08:00-00:00; Sa-Su 09:00-00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.2974273,
+        48.8775051
+      ]
+    }
+  },
+  {
+    "name": "L'Atalante",
+    "address": {
+      "street": "Quai de la Marne",
+      "housenumber": "26",
+      "postcode": "75019",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33145261382",
+      "website": "http://atalanteourcq.fr/"
+    },
+    "opening_hours": "Mo 17:00-24:00; Tu-Th 17:00-01:30; Fr-Su 12:00-01:30; PH off",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.3829449,
+        48.8897319
+      ]
+    }
+  },
+  {
+    "name": "Bear's Den",
+    "address": {
+      "street": "Rue des Lombards",
+      "housenumber": "6",
+      "postcode": "75004",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 1 42 71 08 20",
+      "website": "http://www.bearsden.fr/"
+    },
+    "opening_hours": "Mo-Fr 16:00-03:00; Sa,Su 16:00-04:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.3500269,
+        48.8591237
+      ]
+    }
+  },
+  {
+    "name": "Au Rêve",
+    "address": {
+      "street": "Rue Caulaincourt",
+      "housenumber": "89",
+      "postcode": "75018",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+339 55 51 39 82",
+      "website": "https://aureve.com/"
+    },
+    "opening_hours": "Mo-Fr 08:00-02:00; Sa 09:00-02:00; Su 09:00-17:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.3377779,
+        48.8896871
+      ]
+    }
+  },
+  {
+    "name": "Papy Aux Fourneaux",
+    "address": {
+      "street": "Rue de l'Ouest",
+      "housenumber": "70",
+      "postcode": "75014",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 1 45 49 06 12",
+      "website": "https://papyauxfourneaux.fr/"
+    },
+    "opening_hours": "Mo-Su 12:00-14:00, 19:30-22:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.3180191,
+        48.8355396
+      ]
+    }
+  },
+  {
+    "name": "Chez Lui",
+    "address": {
+      "street": "Rue Saint-Maur",
+      "housenumber": "67",
+      "postcode": "75011",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 1 43 38 37 02",
+      "website": "https://www.facebook.com/Chez-Lui-659428777555045/"
+    },
+    "opening_hours": "Mo-Su 07:00-02:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.3793208,
+        48.8629197
+      ]
+    }
+  },
+  {
+    "name": "Pili Pili",
+    "address": {
+      "street": "Rue Jean-Pierre Timbaud",
+      "housenumber": "70",
+      "postcode": "75011",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 1 47 00 49 36",
+      "website": "http://barpili.com"
+    },
+    "opening_hours": "Tu-Sa 18:00-02:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.3751381,
+        48.8670372
+      ]
+    }
+  },
+  {
+    "name": "Touller Outillage",
+    "address": {
+      "street": "Rue Jean-Pierre Timbaud",
+      "housenumber": "68",
+      "postcode": "75011",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 1 43 38 61 25",
+      "website": "http://toulleroutillage.strikingly.com"
+    },
+    "opening_hours": "Th-Su 17:00-02:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.3747363,
+        48.8669328
+      ]
+    }
+  },
+  {
+    "name": "L'Impasse",
+    "address": {
+      "street": "Cité Griset",
+      "housenumber": "4",
+      "postcode": "75011",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 6 52 76 69 77",
+      "website": "http://limpassebar.com/"
+    },
+    "opening_hours": "Tu-Sa 17:00-02:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.379199,
+        48.8664684
+      ]
+    }
+  },
+  {
+    "name": "L'intrépide Bar",
+    "address": {
+      "street": "Rue Pierre Fontaine",
+      "housenumber": "37",
+      "postcode": "75009",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 7 67 41 65 26",
+      "website": "https://demoryparis.com/lintrepide-craft-beer-bar"
+    },
+    "opening_hours": "Tu 18:00-23:59; We-Sa 00:00-02:00, 18:00-23:59; Su 00:00-02:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.3329762,
+        48.8829761
+      ]
+    }
+  },
+  {
+    "name": "Le Ô Lieu De",
+    "address": {
+      "street": "Rue Jean-Pierre Timbaud",
+      "housenumber": "6",
+      "postcode": "75011",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 7 69 37 34 51",
+      "website": "https://www.olieude.com/"
+    },
+    "opening_hours": "Mo-Su 11:30-15:00, 18:00-02:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.366946,
+        48.864912
+      ]
+    }
+  },
+  {
+    "name": "Bobance Bar",
+    "address": {
+      "street": "Place Flora Tristan",
+      "housenumber": null,
+      "postcode": "75014",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 6 75 76 76 37",
+      "website": "https://www.bobance.com/"
+    },
+    "opening_hours": "Mo-Fr 18:30+",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.3522,
+        48.8566
+      ]
+    }
+  },
+  {
+    "name": "Aux Ours",
+    "address": {
+      "street": "Rue des Pyrénées",
+      "housenumber": "236",
+      "postcode": "75020",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 1 83 96 40 79",
+      "website": "https://auxours.fr"
+    },
+    "opening_hours": "Mo-Fr 07:00-02:00; Sa,Su 08:00-02:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.3966014,
+        48.8675526
+      ]
+    }
+  },
+  {
+    "name": "Les Mauvais Joueurs",
+    "address": {
+      "street": "Rue Sedaine",
+      "housenumber": "46",
+      "postcode": "75011",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 6 50 66 79 21",
+      "website": "https://lesmauvaisjoueurs.com"
+    },
+    "opening_hours": "Tu-Fr 17:00-01:00; Sa 15:00-01:00; Su 15:00-23:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.3755045,
+        48.8572513
+      ]
+    }
+  },
+  {
+    "name": "Baretto Paris",
+    "address": {
+      "street": "Rue d'Alexandrie",
+      "housenumber": "14",
+      "postcode": "75002",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 9 67 40 40 23",
+      "website": "https://www.barettoparis.fr/menus-carte"
+    },
+    "opening_hours": "Mo 10:00-24:00; Tu-Fr 00:00-01:30, 10:00-24:00; Sa 00:00-01:30, 18:00-24:00; Su 00:00-01:30",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.3504152,
+        48.8682473
+      ]
+    }
+  },
+  {
+    "name": "The Labo Bar Club Paris",
+    "address": {
+      "street": "Rue des Lombards",
+      "housenumber": "37",
+      "postcode": "75001",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33140280252",
+      "website": "https://thelabo.fr"
+    },
+    "opening_hours": "Tu-We 15:00-03:00; Th-Fr 15:00-06:00; Sa-Su 15:00-03:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.347673,
+        48.8597283
+      ]
+    }
+  },
+  {
+    "name": "Freemousse.bar",
+    "address": {
+      "street": "Rue Marcadet",
+      "housenumber": "76",
+      "postcode": "75018",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 6 88 88 19 65",
+      "website": "http://freemousse.bar"
+    },
+    "opening_hours": "Mo-Sa 00:00-02:00, 17:00-23:59; Su 00:00-02:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.3472055,
+        48.8903877
+      ]
+    }
+  },
+  {
+    "name": "La pince à cornichons",
+    "address": {
+      "street": "Rue du Croissant",
+      "housenumber": "20",
+      "postcode": "75002",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 1 42 36 38 90",
+      "website": "https://www.lapinceacornichons.fr/"
+    },
+    "opening_hours": "Tu-Fr 11:30-15:00, 17:00-01:30; Sa 17:00-01:30",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.3435235,
+        48.8691174
+      ]
+    }
+  },
+  {
+    "name": "L'Eurydice",
+    "address": {
+      "street": "Rue du Cardinal Lemoine",
+      "housenumber": "79",
+      "postcode": "75005",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 9 87 70 85 72",
+      "website": "https://leurydice.fr"
+    },
+    "opening_hours": "Tu-Th 17:00-02:00; Fr-Sa 17:00-04:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.3498309,
+        48.8449925
+      ]
+    }
+  },
+  {
+    "name": "Arkose Chevaleret",
+    "address": {
+      "street": "Rue du Chevaleret",
+      "housenumber": "181",
+      "postcode": "75013",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 1 45 85 87 04",
+      "website": "https://arkose.com/chevaleret"
+    },
+    "opening_hours": "Mo-Su 07:00-00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.3686089,
+        48.8335021
+      ]
+    }
+  },
+  {
+    "name": "Levain Le Vin",
+    "address": {
+      "street": "Rue du Faubourg Saint-Martin",
+      "housenumber": "83",
+      "postcode": "75010",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 1 42 45 49 10",
+      "website": "https://www.levainlevin.com/"
+    },
+    "opening_hours": "Tu-Sa 10:00-22:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.3575198,
+        48.8726798
+      ]
+    }
+  },
+  {
+    "name": "Neuvième Sauvage",
+    "address": {
+      "street": "Rue Gérando",
+      "housenumber": "20",
+      "postcode": "75009",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 6 28 26 15 95",
+      "website": "https://menu.tastycloud.fr/111eefe17ad411b44710752a0ba9bf0febdf80c9192e0ee0b641a9bb58aec98f/"
+    },
+    "opening_hours": "Mo-Su 00:00-02:00, 07:00-23:59",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.3466046,
+        48.8829609
+      ]
+    }
+  },
+  {
+    "name": "Sacré Frenchy !",
+    "address": {
+      "street": "Boulevard de Sébastopol",
+      "housenumber": "58",
+      "postcode": "75003",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 1 42 74 55 63",
+      "website": "https://www.sacrefrenchy.com"
+    },
+    "opening_hours": "Mo-Su 11:30-23:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.3511346,
+        48.8632185
+      ]
+    }
+  },
+  {
+    "name": "Les Brigands",
+    "address": {
+      "street": "Rue Montmartre",
+      "housenumber": "120",
+      "postcode": "75002",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 1 73 79 89 69",
+      "website": "https://www.thirstymadcat.com/"
+    },
+    "opening_hours": "Mo-Fr 16:00-02:00; Sa 15:00-01:00; Su 15:00-00:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.3439107,
+        48.8678022
+      ]
+    }
+  },
+  {
+    "name": "Quai de la photo",
+    "address": {
+      "street": "Port de la Gare",
+      "housenumber": "9",
+      "postcode": "75013",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 7 66 43 01 18",
+      "website": "https://quaidelaphoto.fr/"
+    },
+    "opening_hours": "May-Oct 12:00-23:30; Nov-Dec We-Su 12:00-23:30; Jan-Apr We-Su 12:00-23:30",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.3754059,
+        48.8366207
+      ]
+    }
+  },
+  {
+    "name": "Harry's New York Bar",
+    "address": {
+      "street": "Rue Daunou",
+      "housenumber": "5",
+      "postcode": "75002",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 1 42 61 71 14",
+      "website": "https://www.harrysbar.fr/"
+    },
+    "opening_hours": "Mo-Su 12:00-02:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.332304,
+        48.869344
+      ]
+    }
+  },
+  {
+    "name": "Moonshiner",
+    "address": {
+      "street": "Rue Sedaine",
+      "housenumber": "5",
+      "postcode": "75011",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 9 50 32 19 90",
+      "website": "http://moonshinerbar.fr/"
+    },
+    "opening_hours": "Mo-Su 18:00-02:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.370535,
+        48.855364
+      ]
+    }
+  },
+  {
+    "name": "Dirty Dick",
+    "address": {
+      "street": "Rue Frochot",
+      "housenumber": "10",
+      "postcode": "75009",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 1 48 78 74 58",
+      "website": "https://www.facebook.com/dirtydickparis/"
+    },
+    "opening_hours": "Mo-Su 18:00-02:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.337583,
+        48.881078
+      ]
+    }
+  },
+  {
+    "name": "Le Perchoir Ménilmontant",
+    "address": {
+      "street": "Rue Crespin du Gast",
+      "housenumber": "14",
+      "postcode": "75011",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 1 83 62 64 22",
+      "website": "https://leperchoir.fr/"
+    },
+    "opening_hours": "We-Fr 16:00-21:00; Sa-Su 12:00-21:00; Mo-Tu Off",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.380907,
+        48.864971
+      ]
+    }
+  },
+  {
+    "name": "La Bellevilloise",
+    "address": {
+      "street": "Rue Boyer",
+      "housenumber": "19-21",
+      "postcode": "75020",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 1 46 36 07 07",
+      "website": "https://www.labellevilloise.com/"
+    },
+    "opening_hours": "We-Th 19:00-02:00; Fr-Sa 19:00-06:00; Su 11:30-16:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.392723,
+        48.868778
+      ]
+    }
+  },
+  {
+    "name": "Le Liberté",
+    "address": {
+      "street": "Avenue d'Italie",
+      "housenumber": "190",
+      "postcode": "75013",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 1 45 80 40 04",
+      "website": "https://wiicmenu-qrcode.com/app/offre.php?resto=271"
+    },
+    "opening_hours": "Mo-Su 07:00-02:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.359281,
+        48.819385
+      ]
+    }
+  },
+  {
+    "name": "Candelaria",
+    "address": {
+      "street": "Rue de Saintonge",
+      "housenumber": "52",
+      "postcode": "75003",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 1 42 74 41 28",
+      "website": "https://www.candelaria-paris.com/"
+    },
+    "opening_hours": "Mo-Su 18:00-02:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.363152,
+        48.862822
+      ]
+    }
+  },
+  {
+    "name": "Bisou.",
+    "address": {
+      "street": "Boulevard du Temple",
+      "housenumber": "15",
+      "postcode": "75003",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 1 40 27 82 85",
+      "website": "https://www.bar-bisou.com/"
+    },
+    "opening_hours": "Mo-Su 18:00-02:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.363065,
+        48.864703
+      ]
+    }
+  },
+  {
+    "name": "CopperBay",
+    "address": {
+      "street": "Rue Bouchardon",
+      "housenumber": "5",
+      "postcode": "75010",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 9 83 59 92 16",
+      "website": "http://copperbay.fr/"
+    },
+    "opening_hours": "Su-We 18:00-01:00; Th-Sa 18:00-02:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.356556,
+        48.870344
+      ]
+    }
+  },
+  {
+    "name": "Les Fontaines",
+    "address": {
+      "street": "Rue Brisemiche",
+      "housenumber": "12",
+      "postcode": "75004",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 9 83 33 95 05",
+      "website": "https://www.facebook.com/cafelesfontaines/"
+    },
+    "opening_hours": "Mo-Su 11:30-02:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.351445,
+        48.859604
+      ]
+    }
+  },
+  {
+    "name": "Cafe Plaisance",
+    "address": {
+      "street": "Rue d'Alésia",
+      "housenumber": "203",
+      "postcode": "75014",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 1 45 42 92 33",
+      "website": "http://www.cafeleplaisance.fr/"
+    },
+    "opening_hours": "Mo-Su 06:30-02:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.315056,
+        48.831732
+      ]
+    }
+  },
+  {
+    "name": "Le Viaduc",
+    "address": {
+      "street": "Avenue Daumesnil",
+      "housenumber": "43",
+      "postcode": "75012",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 1 44 74 70 70",
+      "website": "http://www.leviaducdaumesnil.com/"
+    },
+    "opening_hours": "Mo-Fr 08:00-02:00; Sa-Su 09:00-02:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.373516,
+        48.848593
+      ]
+    }
+  },
+  {
+    "name": "Experimental Cocktail Club",
+    "address": {
+      "street": "Rue Saint-Sauveur",
+      "housenumber": "37",
+      "postcode": "75002",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 1 45 08 88 09",
+      "website": "https://www.experimentalcocktailclubparis.com/"
+    },
+    "opening_hours": "Mo-Th 19:00-02:00; Fr-Sa 19:00-04:00; Su 20:00-02:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.347524,
+        48.865802
+      ]
+    }
+  }
+]
