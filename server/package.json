@@ -8,7 +8,7 @@
     "start": "node index.js",
     "dev": "nodemon index.js",
     "seed_mongodb": "node data/mongodb/seed.js",
-    "seed_neo4j": "data/neo4J/seed.cypher"
+    "seed_neo4j": "node data/neo4J/seed.cypher"
   },
   "dependencies": {
     "bcryptjs": "^3.0.3",
