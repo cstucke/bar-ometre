@@ -20,46 +20,78 @@
     <form id="search-form" class="search-container">
         <input type="text" name="name" placeholder="Search by name...">
         <input type="text" name="city" placeholder="City (e.g. Paris)">
-
         <select name="arrondissement">
             <option value="">Any Arrondissement</option>
         </select>
-
         <label class="toggle-label">
             <input type="checkbox" name="clustering" value="yes" checked>
             Cluster Pins
         </label>
         <button type="submit">Search</button>
     </form>
+
+    <div class="auth-container" id="auth-ui">
+        </div>
 </header>
+
+<div class="social-filters">
+    <button class="btn-social" onclick="loadTrendingBars()">🔥 Trending Bars</button>
+    <button class="btn-social" id="btn-recs" onclick="loadFriendRecommendations()">🍻 Recommended for Me</button>
+</div>
 
 <main class="main-container">
     <section class="map-section">
         <div id="map"></div>
     </section>
-
     <aside class="list-section">
         <h2 id="result-count">Found 0 Bars</h2>
         <div id="bar-list"></div>
     </aside>
 </main>
 
+<div id="login-modal" class="modal">
+    <div class="modal-content">
+        <span class="modal-close" onclick="closeModals()">×</span>
+        <h3>Login</h3>
+        <form id="login-form">
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</div>
+
+<div id="register-modal" class="modal">
+    <div class="modal-content">
+        <span class="modal-close" onclick="closeModals()">×</span>
+        <h3>Register</h3>
+        <form id="register-form">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+</div>
+
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
 <script>
+    // --- MAP & CORE DOM SETUP ---
     const form = document.querySelector("#search-form");
     const loadingOverlay = document.querySelector("#loading-overlay");
     const resultCount = document.querySelector("#result-count");
     const barList = document.querySelector("#bar-list");
     const arrondissementSelect = form.elements.arrondissement;
+    const authUiContainer = document.getElementById("auth-ui");
 
     const map = L.map("map").setView([48.8566, 2.3522], 12);
     let markerLayer = L.markerClusterGroup();
     map.addLayer(markerLayer);
 
     L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
-        attribution: "&copy; OpenStreetMap contributors &copy; CARTO",
-        maxZoom: 20
+        attribution: "© OpenStreetMap contributors © CARTO",
+        maxZoom: 19
     }).addTo(map);
 
     for (let index = 1; index <= 20; index += 1) {
@@ -70,29 +102,115 @@
         arrondissementSelect.appendChild(option);
     }
 
-    function setLoading(isLoading) {
-        loadingOverlay.style.display = isLoading ? "flex" : "none";
+    // --- AUTHENTICATION STATE ---
+    let token = localStorage.getItem('token');
+    let username = localStorage.getItem('username');
+
+    function updateAuthUI() {
+        if (token) {
+            authUiContainer.innerHTML = `
+                <span class="user-greeting">Hi, ${escapeHtml(username)}!</span>
+                <button class="btn-secondary" onclick="logout()">Logout</button>
+            `;
+            document.getElementById('btn-recs').disabled = false;
+        } else {
+            authUiContainer.innerHTML = `
+                <button onclick="document.getElementById('login-modal').style.display='flex'">Login</button>
+                <button class="btn-secondary" onclick="document.getElementById('register-modal').style.display='flex'">Register</button>
+            `;
+            document.getElementById('btn-recs').disabled = true;
+        }
     }
 
+    function logout() {
+        localStorage.removeItem('token');
+        localStorage.removeItem('username');
+        token = null; username = null;
+        updateAuthUI();
+        loadBars(); // Reload to remove social buttons
+    }
+
+    function closeModals() {
+        document.getElementById('login-modal').style.display = 'none';
+        document.getElementById('register-modal').style.display = 'none';
+    }
+
+    // Login Submission
+    document.getElementById('login-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        try {
+            const res = await fetch('/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
+            });
+            const data = await res.json();
+            if (data.success) {
+                token = data.token;
+                // Quick hack to get username from JWT without library
+                const payload = JSON.parse(atob(token.split('.')[1]));
+                username = payload.username;
+                localStorage.setItem('token', token);
+                localStorage.setItem('username', username);
+                closeModals();
+                updateAuthUI();
+                loadBars(); // Refresh to show like buttons
+            } else { alert(data.message); }
+        } catch (err) { alert("Login failed"); }
+    });
+
+    // Register Submission
+    document.getElementById('register-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const usernameInput = e.target.username.value;
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        try {
+            const res = await fetch('/auth/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username: usernameInput, email, password })
+            });
+            const data = await res.json();
+            if (data.success) {
+                token = data.token;
+                username = usernameInput;
+                localStorage.setItem('token', token);
+                localStorage.setItem('username', username);
+                closeModals();
+                updateAuthUI();
+                loadBars();
+            } else { alert(data.message); }
+        } catch (err) { alert("Registration failed"); }
+    });
+
+    // --- SOCIAL ACTIONS ---
+    async function performSocialAction(endpoint, mongoId) {
+        if (!token) return alert("Please login first!");
+        try {
+            const res = await fetch(endpoint, {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}` 
+                },
+                body: JSON.stringify({ mongoId }) // sending the bar ID to neo4j
+            });
+            const data = await res.json();
+            if(data.success) { alert("Action successful!"); }
+            else { alert(data.message); }
+        } catch (err) { alert("Failed to perform action"); }
+    }
+
+    window.likeBar = (id) => performSocialAction('/social/like', id);
+    window.visitBar = (id) => performSocialAction('/social/visit', id);
+
+    // --- RENDERING & FETCHING ---
+    function setLoading(isLoading) { loadingOverlay.style.display = isLoading ? "flex" : "none"; }
     function escapeHtml(value) {
-        return String(value ?? "")
-            .replaceAll("&", "&amp;")
-            .replaceAll("<", "&lt;")
-            .replaceAll(">", "&gt;")
-            .replaceAll('"', "&quot;")
-            .replaceAll("'", "&#039;");
-    }
-
-    function buildQuery(params) {
-        const query = new URLSearchParams();
-
-        Object.entries(params).forEach(([key, value]) => {
-            if (value) {
-                query.set(key, value);
-            }
-        });
-
-        return query.toString();
+        return String(value ?? "").replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#039;");
     }
 
     function getBarAddress(bar) {
@@ -101,33 +219,35 @@
 
     function renderList(bars) {
         resultCount.textContent = `Found ${bars.length} Bars`;
-
-        if (!bars.length) {
-            barList.innerHTML = "<p>No bars found. Try a different search.</p>";
-            return;
-        }
+        if (!bars.length) { barList.innerHTML = "<p>No bars found. Try a different search.</p>"; return; }
 
         barList.innerHTML = bars.map((bar) => {
-            const website = bar.website
-                ? `<a href="${escapeHtml(bar.website)}" target="_blank" rel="noreferrer" class="bar-link">Website</a>`
-                : "";
-            const directionsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${bar.name || ""} ${bar.city || ""}`)}`;
+            const website = bar.website ? `<a href="${escapeHtml(bar.website)}" target="_blank" class="bar-link">Website</a>` : "";
+            const directionsUrl = `http://maps.google.com/?q=${encodeURIComponent(`${bar.name || ""} ${bar.city || ""}`)}`;
+            
+            // Bar ID to pass to Neo4j (assuming your MongoDB documents use _id or id)
+            const barId = bar._id || bar.id;
+            
+            // Only show Social buttons if logged in
+            const socialButtons = token ? `
+                <button class="action-btn" onclick="likeBar('${barId}')">❤️ Like</button>
+                <button class="action-btn" onclick="visitBar('${barId}')">📍 Visited</button>
+            ` : "";
 
             return `
                 <article class="bar-card">
                     <div class="bar-img-container">
-                        <img src="https://loremflickr.com/320/240/bar,pub,cocktail?lock=${escapeHtml(bar.id)}" alt="" loading="lazy">
+                        <img src="https://loremflickr.com/320/240/bar,pub?lock=${escapeHtml(bar.id)}" alt="" loading="lazy">
                     </div>
-
                     <div class="bar-info">
                         <div class="bar-name">${escapeHtml(bar.name || "Unknown")}</div>
                         <div class="bar-details">
                             ${escapeHtml(getBarAddress(bar))}<br>
                             ${bar.phone ? `${escapeHtml(bar.phone)}<br>` : ""}
-
                             <div class="bar-actions">
                                 ${website}
-                                <a href="${directionsUrl}" target="_blank" rel="noreferrer" class="bar-link">Directions</a>
+                                <a href="${directionsUrl}" target="_blank" class="bar-link">Directions</a>
+                                ${socialButtons}
                             </div>
                         </div>
                     </div>
@@ -138,64 +258,86 @@
 
     function renderMap(bars, useClustering) {
         map.removeLayer(markerLayer);
-        markerLayer = useClustering ? L.markerClusterGroup() : L.layerGroup();
-
+        markerLayer = useClustering ? L.markerClusterGroup({ maxClusterRadius: 80 }) : L.layerGroup();
         const bounds = [];
 
         bars.forEach((bar) => {
-            const lat = Number(bar.latitude);
-            const lng = Number(bar.longitude);
+            const lat = Number(bar.latitude); const lng = Number(bar.longitude);
+            if (!Number.isFinite(lat) || !Number.isFinite(lng)) return;
 
-            if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
-                return;
-            }
+            const barId = bar._id || bar.id;
+            const socialButtons = token ? `<br><button onclick="likeBar('${barId}')">❤️ Like</button>` : "";
 
             const popup = `
                 <div class="map-popup">
                     <h4>${escapeHtml(bar.name || "Unknown")}</h4>
                     <p>${escapeHtml(getBarAddress(bar))}</p>
-                    ${bar.phone ? `<p>${escapeHtml(bar.phone)}</p>` : ""}
-                    ${bar.website ? `<a href="${escapeHtml(bar.website)}" target="_blank" rel="noreferrer">Visit Website</a>` : ""}
+                    ${bar.website ? `<a href="${escapeHtml(bar.website)}" target="_blank">Website</a>` : ""}
+                    ${socialButtons}
                 </div>
             `;
-
             L.marker([lat, lng]).bindPopup(popup).bindTooltip(bar.name || "Unknown").addTo(markerLayer);
             bounds.push([lat, lng]);
         });
-
         map.addLayer(markerLayer);
-
-        if (bounds.length) {
-            map.fitBounds(bounds, { padding: [30, 30], maxZoom: 15 });
-        }
+        if (bounds.length) map.fitBounds(bounds, { padding: [30, 30], maxZoom: 15 });
     }
 
+    async function fetchFromApi(url, headers = {}) {
+        const res = await fetch(url, { headers });
+        const payload = await res.json();
+        if (!res.ok) throw new Error(payload.message || "Request failed");
+        return payload.data || [];
+    }
+
+    // Standard Search
     async function loadBars(filters = {}) {
         setLoading(true);
-
         try {
-            const query = buildQuery(filters);
-            const response = await fetch(`/api/bars${query ? `?${query}` : ""}`);
-            const payload = await response.json();
-
-            if (!response.ok) {
-                throw new Error(payload.message || "Unable to load bars");
-            }
-
-            const bars = payload.data || [];
+            const query = new URLSearchParams();
+            Object.entries(filters).forEach(([k, v]) => { if (v) query.set(k, v); });
+            
+            const bars = await fetchFromApi(`/api/bars${query.toString() ? `?${query.toString()}` : ""}`);
             renderMap(bars, form.elements.clustering.checked);
             renderList(bars);
         } catch (error) {
             barList.innerHTML = `<p>${escapeHtml(error.message)}</p>`;
             resultCount.textContent = "Found 0 Bars";
-        } finally {
-            setLoading(false);
-        }
+        } finally { setLoading(false); }
     }
 
-    form.addEventListener("submit", (event) => {
-        event.preventDefault();
+    // Neo4j Social Fetches
+    // *NOTE*: These assume your backend takes the IDs from Neo4j and resolves them to full MongoDB bar objects.
+    async function loadTrendingBars() {
+        setLoading(true);
+        try {
+            const bars = await fetchFromApi('/social/trending');
+            renderMap(bars, form.elements.clustering.checked);
+            renderList(bars);
+            resultCount.textContent = `Top ${bars.length} Trending Bars 🔥`;
+        } catch (error) {
+            alert("Could not load trending bars.");
+        } finally { setLoading(false); }
+    }
 
+    async function loadFriendRecommendations() {
+        if (!token) return alert("Log in to see recommendations!");
+        setLoading(true);
+        try {
+            const bars = await fetchFromApi('/social/recommendations/friends', {
+                'Authorization': `Bearer ${token}`
+            });
+            renderMap(bars, form.elements.clustering.checked);
+            renderList(bars);
+            resultCount.textContent = `Recommended for you 🍻`;
+        } catch (error) {
+            alert("Could not load recommendations.");
+        } finally { setLoading(false); }
+    }
+
+    // Events
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
         loadBars({
             name: form.elements.name.value.trim(),
             city: form.elements.city.value.trim(),
@@ -203,12 +345,11 @@
         });
     });
 
-    form.elements.clustering.addEventListener("change", () => {
-        form.requestSubmit();
-    });
+    form.elements.clustering.addEventListener("change", () => form.requestSubmit());
 
+    // Init
+    updateAuthUI();
     loadBars();
 </script>
-
 </body>
 </html>

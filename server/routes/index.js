@@ -10,6 +10,7 @@ import barRoutes from "./barRoutes.js";
 import filterRoutes from "./filterRoutes.js";
 import healthRoutes from "./healthRoutes.js";
 import socialRoutes from "./socialRoutes.js";
+import authRoutes from './authRoutes.js';
 
 const router = Router();
 
@@ -17,6 +18,7 @@ router.use("/health", healthRoutes);
 router.use("/bars", barRoutes);
 router.use("/filters", filterRoutes);
 router.use("/social", socialRoutes);
+router.use('/auth', authRoutes);
 
 router.get("/cities", asyncHandler(getCities));
 router.get("/stats", asyncHandler(getStatistics));
