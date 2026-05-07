@@ -4,9 +4,17 @@ export async function getBars(filters) {
   return barRepository.findAllBars(filters);
 }
 
-export async function getBarById(id) {
-  return barRepository.findBarById(id);
-}
+export const getBarsByIds = async (barIds) => {
+  try {
+    const bars = await Bar.find({
+      _id: { $in: barIds } 
+    });
+    return bars;
+  } catch (error) {
+    console.error("Error fetching populated bars from MongoDB:", error);
+    throw new Error('Could not fetch complete bar details');
+  }
+};
 
 export async function searchBars(term) {
   if (!term) {

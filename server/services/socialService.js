@@ -1,7 +1,6 @@
 import neo4jDriver from '../config/neo4j.js';
 
-class SocialService {
-  async syncUser(userId, username) {
+export async function syncUser(userId, username) {
     const session = neo4jDriver.session();
     try {
       await session.run(
@@ -11,9 +10,9 @@ class SocialService {
     } finally {
       await session.close();
     }
-  }
+}
 
-  async followUser(followerId, followeeId) {
+export async function followUser(followerId, followeeId) {
     const session = neo4jDriver.session();
     try {
       await session.run(
@@ -24,9 +23,9 @@ class SocialService {
     } finally {
       await session.close();
     }
-  }
+}
 
-  async likeBar(userId, mongoId) {
+export async function likeBar(userId, mongoId) {
     const session = neo4jDriver.session();
     try {
       await session.run(
@@ -38,9 +37,9 @@ class SocialService {
     } finally {
       await session.close();
     }
-  }
+}
 
-  async visitBar(userId, mongoId) {
+export async function visitBar(userId, mongoId) {
     const session = neo4jDriver.session();
     try {
       await session.run(
@@ -53,9 +52,9 @@ class SocialService {
     } finally {
       await session.close();
     }
-  }
+}
 
-  async getFriendRecommendations(userId) {
+export async function  getFriendRecommendations(userId) {
     const session = neo4jDriver.session();
     try {
       const result = await session.run(
@@ -69,9 +68,9 @@ class SocialService {
     } finally {
       await session.close();
     }
-  }
+}
 
-  async getTrendingBars() {
+export async function getTrendingBars() {
     const session = neo4jDriver.session();
     try {
       const result = await session.run(
@@ -83,7 +82,4 @@ class SocialService {
     } finally {
       await session.close();
     }
-  }
 }
-
-export default new SocialService();

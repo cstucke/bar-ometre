@@ -1,21 +1,22 @@
 import { Router } from 'express';
+import { protect } from '../middleware/authMiddleware.js';
 import {
-  syncUser,
   followUser,
   likeBar,
   visitBar,
   getFriendRecommendations,
-  getTrendingBars
+  getTrendingBars,
+  syncUser
 } from '../controllers/socialController.js';
 
 const router = Router();
 
-router.post('/sync-user', syncUser);
-router.post('/follow', followUser);
-router.post('/like', likeBar);
-router.post('/visit', visitBar);
+router.post('/sync-user', protect, syncUser);
+router.post('/follow', protect, followUser);
+router.post('/like', protect, likeBar);
+router.post('/visit', protect, visitBar);
 
-router.get('/recommendations/friends/:userId', getFriendRecommendations);
+router.get('/recommendations/friends', protect, getFriendRecommendations);
 router.get('/trending', getTrendingBars);
 
 export default router;
