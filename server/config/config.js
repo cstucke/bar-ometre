@@ -13,9 +13,15 @@ export const config = {
     port:    process.env.PORT || 3000,
     nodeEnv: process.env.NODE_ENV || "development",
   },
-  
+
   mongodb: {
     uri:    required("MONGODB_URI"),
     dbName: required("MONGODB_DB"),
+  },
+
+  redis: {
+    enabled: process.env.REDIS_ENABLED === "true",
+    url: process.env.REDIS_URL,
+    searchCacheTtlSeconds: Number(process.env.REDIS_SEARCH_CACHE_TTL_SECONDS) || 300,
   },
 };

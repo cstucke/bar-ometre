@@ -7,6 +7,7 @@ import {
 import { getCities, getStatistics } from "../controllers/filterController.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import barRoutes from "./barRoutes.js";
+import eventPopupRoutes from "./eventPopupRoutes.js";
 import filterRoutes from "./filterRoutes.js";
 import healthRoutes from "./healthRoutes.js";
 import socialRoutes from "./socialRoutes.js";
@@ -16,6 +17,7 @@ const router = Router();
 
 router.use("/health", healthRoutes);
 router.use("/bars", barRoutes);
+router.use("/event-popups", eventPopupRoutes);
 router.use("/filters", filterRoutes);
 router.use("/social", socialRoutes);
 router.use('/auth', authRoutes);

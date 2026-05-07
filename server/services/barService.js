@@ -1,4 +1,5 @@
 import * as barRepository from "../data/mongodb/barRepositoryMongo.js";
+import * as searchCacheService from "./searchCacheService.js";
 
 export async function getBars(filters) {
   return barRepository.findAllBars(filters);
@@ -22,7 +23,13 @@ export async function searchBars(term) {
     error.statusCode = 400;
     throw error;
   };
-  return barRepository.searchBars(term);
+  const searchParams = { term };
+  const cachedBars = await searchCacheService.getCachedSearchResult(searchParams);
+  if (cachedBars !== null) return cachedBars;
+
+  const bars = await barRepository.searchBars(term);
+  await searchCacheService.setCachedSearchResult(searchParams, bars);
+  return bars;
 };
 
 export async function getBarsByCity(city) {

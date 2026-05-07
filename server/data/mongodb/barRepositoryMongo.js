@@ -68,6 +68,15 @@ export async function findNearby({ lng, lat, maxDistance = 1000, limit = 50 }) {
   return docs.map(toDTO);
 }
 
+export async function findBarsWithOpeningHours() {
+  return barsCollection
+    .find(
+      { opening_hours: { $exists: true, $type: "string", $ne: "" } },
+      { projection: { _id: 1, name: 1, opening_hours: 1 } },
+    )
+    .toArray();
+}
+
 export async function findFilterOptions() {
   const cities = await barsCollection
     .distinct("address.city", { "address.city": { $ne: null } });
