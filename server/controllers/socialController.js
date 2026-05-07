@@ -27,17 +27,6 @@ export const visitBar = asyncHandler(async (req, res) => {
 });
 
 export const getFriendRecommendations = asyncHandler(async (req, res) => {
-  const { userId } = req.params;
-  const barIds = await socialService.getFriendRecommendations(userId);
-  res.status(200).json({ success: true, data: barIds });
-});
-
-export const getTrendingBars = asyncHandler(async (req, res) => {
-  const barIds = await socialService.getTrendingBars();
-  res.status(200).json({ success: true, data: barIds });
-});
-
-export const getFriendRecommendations = asyncHandler(async (req, res) => {
   const userId = req.user.userId; 
   const barIds = await socialService.getFriendRecommendations(userId);
   const fullBars = await getBarsByIds(barIds);
