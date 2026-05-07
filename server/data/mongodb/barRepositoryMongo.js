@@ -92,6 +92,15 @@ export async function findNearby({ lng, lat, maxDistance = 1000, limit = 50 }) {
   return docs.map(toDTO);
 }
 
+export async function findBarsWithOpeningHours() {
+  return barsCollection
+    .find(
+      { opening_hours: { $exists: true, $type: "string", $ne: "" } },
+      { projection: { _id: 1, name: 1, opening_hours: 1 } },
+    )
+    .toArray();
+}
+
 export async function findFilterOptions() {
   const cities = await barsCollection
     .distinct("address.city", { "address.city": { $ne: null } });
@@ -99,6 +108,13 @@ export async function findFilterOptions() {
 }
 
 export async function findStatistics() {
+  const [total_bars, bars_with_coordinates, cities] = await Promise.all([
+    barsCollection.countDocuments(),
+    barsCollection.countDocuments({ "location.coordinates": { $exists: true } }),
+    barsCollection.distinct("address.city", { "address.city": { $ne: null } }),
+  ]);
+  return { total_bars, total_cities: cities.length, bars_with_coordinates };
+}
   const pipeline = [
     {
       $group: {
