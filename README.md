@@ -2,6 +2,40 @@
 
 Bar-ometre is a local bar discovery app with an interactive map, basic search, and filtering over the current Paris bar dataset.
 
+## Setup, install, and seeding
+The backend can be found in the server/ directory.
+
+### 1. Install dependencies
+```bash
+cd server
+npm install
+```
+
+### 2. Initialize env variables (from server/ directory)
+```bash
+cp .env.example .env
+```
+Then, fill in all of the environment variables in your .env folder.
+
+### 3. Seed the database
+This node script runs the MongoDB seed script. 
+```bash
+npm run seed
+```
+
+This node script runs the Neo4j seed script.
+```bash
+placeholder for script
+```
+
+After starting the server, Redis will automatically create pop-ups based upon the information from the MongoDB database.
+
+### 4. Start the server
+```bash
+npm start
+```
+You can now access the web application from port 3000 of your localhost.
+
 The backend has been refactored from Flask/Python to an Express API designed around small, expandable layers:
 
 ```txt
