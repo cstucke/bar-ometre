@@ -1,4 +1,4 @@
-import * as barRepository from "../data/postgres/barRepository.js";
+import * as barRepository from "../data/mongodb/barRepositoryMongo.js";
 
 export async function getFilters() {
   return barRepository.findFilterOptions();
@@ -11,4 +11,4 @@ export async function getCities() {
 
 export async function getStatistics() {
   return barRepository.findStatistics();
-}
+};
