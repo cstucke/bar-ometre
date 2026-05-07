@@ -10,6 +10,7 @@ function buildQuery({ name, city, arrondissement } = {}) {
   return query;
 }
 
+
 function toDTO(doc) {
   if (!doc) return null;
   return {
@@ -81,4 +82,13 @@ export async function findStatistics() {
     barsCollection.distinct("address.city", { "address.city": { $ne: null } }),
   ]);
   return { total_bars, total_cities: cities.length, bars_with_coordinates };
+}
+
+export async function findBarsByIds(barIds) {
+  try {
+    return await Bar.find({ _id: { $in: barIds } });
+  } catch (error) {
+    console.error("Error fetching populated bars:", error);
+    throw new Error('Could not fetch complete bar details');
+  }
 }
