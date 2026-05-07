@@ -1132,5 +1132,278 @@
         48.8366207
       ]
     }
+  },
+  {
+    "name": "Harry's New York Bar",
+    "address": {
+      "street": "Rue Daunou",
+      "housenumber": "5",
+      "postcode": "75002",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 1 42 61 71 14",
+      "website": "https://www.harrysbar.fr/"
+    },
+    "opening_hours": "Mo-Su 12:00-02:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.332304,
+        48.869344
+      ]
+    }
+  },
+  {
+    "name": "Moonshiner",
+    "address": {
+      "street": "Rue Sedaine",
+      "housenumber": "5",
+      "postcode": "75011",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 9 50 32 19 90",
+      "website": "http://moonshinerbar.fr/"
+    },
+    "opening_hours": "Mo-Su 18:00-02:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.370535,
+        48.855364
+      ]
+    }
+  },
+  {
+    "name": "Dirty Dick",
+    "address": {
+      "street": "Rue Frochot",
+      "housenumber": "10",
+      "postcode": "75009",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 1 48 78 74 58",
+      "website": "https://www.facebook.com/dirtydickparis/"
+    },
+    "opening_hours": "Mo-Su 18:00-02:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.337583,
+        48.881078
+      ]
+    }
+  },
+  {
+    "name": "Le Perchoir Ménilmontant",
+    "address": {
+      "street": "Rue Crespin du Gast",
+      "housenumber": "14",
+      "postcode": "75011",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 1 83 62 64 22",
+      "website": "https://leperchoir.fr/"
+    },
+    "opening_hours": "We-Fr 16:00-21:00; Sa-Su 12:00-21:00; Mo-Tu Off",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.380907,
+        48.864971
+      ]
+    }
+  },
+  {
+    "name": "La Bellevilloise",
+    "address": {
+      "street": "Rue Boyer",
+      "housenumber": "19-21",
+      "postcode": "75020",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 1 46 36 07 07",
+      "website": "https://www.labellevilloise.com/"
+    },
+    "opening_hours": "We-Th 19:00-02:00; Fr-Sa 19:00-06:00; Su 11:30-16:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.392723,
+        48.868778
+      ]
+    }
+  },
+  {
+    "name": "Le Liberté",
+    "address": {
+      "street": "Avenue d'Italie",
+      "housenumber": "190",
+      "postcode": "75013",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 1 45 80 40 04",
+      "website": "https://wiicmenu-qrcode.com/app/offre.php?resto=271"
+    },
+    "opening_hours": "Mo-Su 07:00-02:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.359281,
+        48.819385
+      ]
+    }
+  },
+  {
+    "name": "Candelaria",
+    "address": {
+      "street": "Rue de Saintonge",
+      "housenumber": "52",
+      "postcode": "75003",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 1 42 74 41 28",
+      "website": "https://www.candelaria-paris.com/"
+    },
+    "opening_hours": "Mo-Su 18:00-02:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.363152,
+        48.862822
+      ]
+    }
+  },
+  {
+    "name": "Bisou.",
+    "address": {
+      "street": "Boulevard du Temple",
+      "housenumber": "15",
+      "postcode": "75003",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 1 40 27 82 85",
+      "website": "https://www.bar-bisou.com/"
+    },
+    "opening_hours": "Mo-Su 18:00-02:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.363065,
+        48.864703
+      ]
+    }
+  },
+  {
+    "name": "CopperBay",
+    "address": {
+      "street": "Rue Bouchardon",
+      "housenumber": "5",
+      "postcode": "75010",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 9 83 59 92 16",
+      "website": "http://copperbay.fr/"
+    },
+    "opening_hours": "Su-We 18:00-01:00; Th-Sa 18:00-02:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.356556,
+        48.870344
+      ]
+    }
+  },
+  {
+    "name": "Les Fontaines",
+    "address": {
+      "street": "Rue Brisemiche",
+      "housenumber": "12",
+      "postcode": "75004",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 9 83 33 95 05",
+      "website": "https://www.facebook.com/cafelesfontaines/"
+    },
+    "opening_hours": "Mo-Su 11:30-02:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.351445,
+        48.859604
+      ]
+    }
+  },
+  {
+    "name": "Cafe Plaisance",
+    "address": {
+      "street": "Rue d'Alésia",
+      "housenumber": "203",
+      "postcode": "75014",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 1 45 42 92 33",
+      "website": "http://www.cafeleplaisance.fr/"
+    },
+    "opening_hours": "Mo-Su 06:30-02:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.315056,
+        48.831732
+      ]
+    }
+  },
+  {
+    "name": "Le Viaduc",
+    "address": {
+      "street": "Avenue Daumesnil",
+      "housenumber": "43",
+      "postcode": "75012",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 1 44 74 70 70",
+      "website": "http://www.leviaducdaumesnil.com/"
+    },
+    "opening_hours": "Mo-Fr 08:00-02:00; Sa-Su 09:00-02:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.373516,
+        48.848593
+      ]
+    }
+  },
+  {
+    "name": "Experimental Cocktail Club",
+    "address": {
+      "street": "Rue Saint-Sauveur",
+      "housenumber": "37",
+      "postcode": "75002",
+      "city": "Paris"
+    },
+    "contact": {
+      "phone": "+33 1 45 08 88 09",
+      "website": "https://www.experimentalcocktailclubparis.com/"
+    },
+    "opening_hours": "Mo-Th 19:00-02:00; Fr-Sa 19:00-04:00; Su 20:00-02:00",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        2.347524,
+        48.865802
+      ]
+    }
   }
 ]
