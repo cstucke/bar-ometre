@@ -85,8 +85,8 @@
     const arrondissementSelect = form.elements.arrondissement;
     const authUiContainer = document.getElementById("auth-ui");
 
-    const map = L.map("map").setView([48.8566, 2.3522], 12);
-    let markerLayer = L.markerClusterGroup();
+    const map = L.map("map", { maxZoom: 19 }).setView([48.8566, 2.3522], 12);
+    let markerLayer = L.markerClusterGroup({ maxClusterRadius: 80 });
     map.addLayer(markerLayer);
 
     L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
@@ -259,6 +259,7 @@
     function renderMap(bars, useClustering) {
         map.removeLayer(markerLayer);
         markerLayer = useClustering ? L.markerClusterGroup({ maxClusterRadius: 80 }) : L.layerGroup();
+
         const bounds = [];
 
         bars.forEach((bar) => {

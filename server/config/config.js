@@ -2,16 +2,20 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+function required(name) {
+  const value = process.env[name];
+  if (!value) throw new Error(`${name} is not set in .env`);
+  return value;
+}
+
 export const config = {
   server: {
-    port: process.env.PORT || 3000,
+    port:    process.env.PORT || 3000,
     nodeEnv: process.env.NODE_ENV || "development",
   },
-  postgres: {
-    host: process.env.POSTGRES_HOST,
-    port: Number(process.env.POSTGRES_PORT || 5432),
-    database: process.env.POSTGRES_DB,
-    user: process.env.POSTGRES_USER,
-    password: process.env.POSTGRES_PASSWORD,
+  
+  mongodb: {
+    uri:    required("MONGODB_URI"),
+    dbName: required("MONGODB_DB"),
   },
 };
