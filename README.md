@@ -20,12 +20,12 @@ Then, fill in all of the environment variables in your .env folder.
 ### 3. Seed the database
 This node script runs the MongoDB seed script. 
 ```bash
-npm run seed
+npm run seed_mongodb
 ```
 
 This node script runs the Neo4j seed script.
 ```bash
-placeholder for script
+npm run seed_neo4j
 ```
 
 After starting the server, Redis will automatically create pop-ups based upon the information from the MongoDB database.
