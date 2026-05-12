@@ -108,13 +108,6 @@ export async function findFilterOptions() {
 }
 
 export async function findStatistics() {
-  const [total_bars, bars_with_coordinates, cities] = await Promise.all([
-    barsCollection.countDocuments(),
-    barsCollection.countDocuments({ "location.coordinates": { $exists: true } }),
-    barsCollection.distinct("address.city", { "address.city": { $ne: null } }),
-  ]);
-  return { total_bars, total_cities: cities.length, bars_with_coordinates };
-}
   const pipeline = [
     {
       $group: {
@@ -139,7 +132,7 @@ export async function findStatistics() {
 
 export async function findBarsByIds(barIds) {
   try {
-    return await Bar.find({ _id: { $in: barIds } });
+    return await barsCollection.find({ _id: { $in: barIds } });
   } catch (error) {
     console.error("Error fetching populated bars:", error);
     throw new Error('Could not fetch complete bar details');

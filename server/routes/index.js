@@ -20,7 +20,7 @@ router.use("/bars", barRoutes);
 router.use("/event-popups", eventPopupRoutes);
 router.use("/filters", filterRoutes);
 router.use("/social", socialRoutes);
-router.use('/auth', authRoutes);
+router.use("/auth", authRoutes);
 
 router.get("/cities", asyncHandler(getCities));
 router.get("/stats", asyncHandler(getStatistics));
